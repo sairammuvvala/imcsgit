@@ -1,37 +1,55 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-  	<servlet-name>EmployeeCreations</servlet-name>
-  	<display-name>EmployeeCreations</display-name>
-  	<description></description>
-  	<servlet-class>EmployeeCreations</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>CreateEmployee</servlet-name>
-  	<display-name>CreateEmployee</display-name>
-  	<description></description>
-  	<servlet-class>mavenServlet.CreateEmployee</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>ReadEmployee</servlet-name>
-  	<display-name>ReadEmployee</display-name>
-  	<description></description>
-  	<servlet-class>mavenServlet.ReadEmployee</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>EmployeeCreations</servlet-name>
-  	<url-pattern>/EmployeeCreations</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>CreateEmployee</servlet-name>
-  	<url-pattern>/CreateEmployee</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>ReadEmployee</servlet-name>
-  	<url-pattern>/ReadEmployee</url-pattern>
-  </servlet-mapping>
+	<display-name>Archetype Created Web Application</display-name>
+	<servlet>
+		<servlet-name>CreateEmployee</servlet-name>
+		<servlet-class>mavenServlet.CreateEmployee</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ReadEmployee</servlet-name>
+		<servlet-class>mavenServlet.ReadEmployee</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateEmployee</servlet-name>
+		<servlet-class>mavenServlet.UpdateEmployee</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteEmployee</servlet-name>
+		<servlet-class>mavenServlet.DeleteEmployee</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateEmployee</servlet-name>
+		<url-pattern>/CreateEmployee</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ReadEmployee</servlet-name>
+		<url-pattern>/ReadEmployee</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateEmployee</servlet-name>
+		<url-pattern>/UpdateEmployee</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteEmployee</servlet-name>
+		<url-pattern>/DeleteEmployee</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ViewAllEmployee</servlet-name>
+		<servlet-class>mavenServlet.ViewAllEmployee</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewAllEmployee</servlet-name>
+		<url-pattern>/ViewAllEmployee</url-pattern>
+	</servlet-mapping>
+
+	<jsp-config>
+		<taglib>
+			<taglib-uri>coretag</taglib-uri>
+			<taglib-location>tlds/c.tld</taglib-location>
+		</taglib>
+	</jsp-config>
 </web-app>

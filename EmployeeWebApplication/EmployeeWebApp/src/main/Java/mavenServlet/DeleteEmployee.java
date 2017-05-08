@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import imcs.training.employeeapp.employeeApp.Employee;
 import imcs.training.employeeapp.employeeApp.JdbcOperations;
 
 /**
- * Servlet implementation class EmployeeRead
+ * Servlet implementation class DeleteEmployee
  */
-public class ReadEmployee extends HttpServlet {
+public class DeleteEmployee extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	JdbcOperations ips =new JdbcOperations();
+	
+	JdbcOperations ops =new JdbcOperations();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReadEmployee() {
+    public DeleteEmployee() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,38 +31,36 @@ public class ReadEmployee extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	/*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-*/
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//doGet(request, response);
+		
 		response.setContentType("text/html");
-		//PrintWriter pw = response.getWriter();
-		String id = request.getParameter("id");
-		System.out.println(id);
+		PrintWriter pw = response.getWriter();
+		int id = Integer.parseInt(request.getParameter("id"));
+		
 		try {
-			Employee employee= ips.read(Integer.parseInt(id));
-			System.out.println(employee);
-			if((employee.getId())!=0){
-				request.setAttribute("employee", employee);
-				request.getRequestDispatcher("viewEmployee.jsp").forward(request, response);
-			}else{
-				RequestDispatcher rd = request.getRequestDispatcher("error.html");
+			ops.delete(id);
+			
+				pw.println("<html><h3>Employee Successfully deleted into database</h3></html>");
+				//pw.println("<html><a href='http://localhost:8080/WebApp/read.html'>View Employee</a></html>");
+				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 				rd.forward(request, response);
-			}
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			/*else
+				System.out.println(" Error \n Employee not inserted into database");*/
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		
-	
 	}
+
 }
